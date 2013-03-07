@@ -1,0 +1,179 @@
+    // contact support validation form
+
+
+	function validateName()
+	{
+		  var name = document.getElementById("name").value;
+		  var nameErr = document.getElementById("nameErr");
+		  if(name == "")
+		  {
+		  		nameErr.innerHTML = "Email require !";
+		  		nameErr.className = "label-important label collapse in";
+		  		return false;
+		  }
+		  else
+		  	return true;
+	}
+	function validateMessage()
+	{
+		  var message = document.getElementById("message").value;
+		  var messageErr = document.getElementById("messageErr");
+		  if(message == "")
+		  {
+		  		messageErr.innerHTML = "Email require !";
+		  		messageErr.className = "label-important label collapse in";
+		  		return false;
+		  }
+		  else
+		  	return true;
+	}
+	
+	// login form validation
+	function emailValidation()
+	{
+		  
+		  var Email = document.getElementById("Email").value;
+		  var emailErr = document.getElementById("Email");
+
+		  
+		  var x= emailInput.value;
+		  var atpos=x.indexOf("@");
+		  var dotpos=x.lastIndexOf(".");
+		  if(Email == "")
+		  {
+		  		emailErr.innerHTML = "Email require !";
+		  		emailErr.className = "label-important label collapse in";
+		  		return false;
+		  }
+		  else
+		  {
+		  		if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+			  	{
+			      	emailErr.innerHTML = "Invalid email address !";
+				  	emailErr.className = "label-important label collapse in";
+				  	return false;
+			 	}
+			 	else
+			    {
+			    	emailErr.className = "collapse";
+			    	return true;
+			    } 	
+		  }
+	}
+	
+	
+	
+	
+	
+	
+	function phoneValidate()
+	{
+		var phone = document.getElementById("phone").value;
+		var phoneErr = document.getElementById("phoneErr");
+		var error = false;
+		
+		//validate mobile number
+		if(phone == "")
+		{
+			phoneErr.innerHTML = "Phone number require!";
+	  		phoneErr.className = "collapse in";
+	  		error = true;
+		}
+		else if(isNaN(phone))
+		{
+			phoneErr.innerHTML = "Must be a number!";
+	  		phoneErr.className = "collapse in";
+	  		error = true;
+		}
+		else
+		{
+			if(!(isNaN(phone)))
+			{
+				if( phone.length == 11)
+				{
+					phoneErr.className = "collapse";
+					error = true;					
+				}
+				else
+				{
+					phoneErr.innerHTML = "Invalid contact number !";
+			  		phoneErr.className = "collapse in";
+			  		error = false;
+				}
+			}			
+		}
+		return error;
+	}
+	
+	function mobileValidate()
+	{
+		var mobile = document.getElementById("mobile").value;
+		var mobileErr = document.getElementById("mobileErr");
+		var error = false;
+		
+		//validate mobile number
+		if(mobile == "")
+		{
+			mobileErr.innerHTML = "Phone number require!";
+	  		mobileErr.className = "collapse in";
+	  		error = true;
+		}
+		else if(isNaN(phone))
+		{
+			mobileErr.innerHTML = "Must be a number!";
+	  		mobileErr.className = "collapse in";
+	  		error = true;
+		}
+		else
+		{
+			if(!(isNaN(mobile)))
+			{
+				if( mobile.length == 11)
+				{
+					mobileErr.className = "collapse";
+					error = true;					
+				}
+				else
+				{
+					mobileErr.innerHTML = "Invalid contact number !";
+			  		mobileErr.className = "label-important label collapse in";
+			  		error = false;
+				}
+			}			
+		}
+		return error;
+	}
+
+	function sendMail() {
+		var company = document.getElementById('company').value;
+		var name = document.getElementById('name').value;
+		var address = document.getElementById('address').value;
+		var email = document.getElementById('email').value;
+		var phone = document.getElementById('phone').value;
+		var mobile = document.getElementById('mobile').value;
+		var website = document.getElementById('website').value;
+		var message = document.getElementById('message').value;
+		var body = "Company: " + company + " Name: " + name + " Address: "; + address + " Email: " + email + " Phone: " +phone+" Mobile: "+mobile+" Website: " + website+ "    Message: " + message;
+		
+    var link = "mailto:shonanmachine_jp@yahoo.co.jp"
+             + "?cc=myCCaddress@example.com"
+             + "&subject=" + escape("Contact")
+             + "&body=" + escape(body)
+    ;
+
+    window.location.href = link;
+}
+	
+	function contactForm()
+	{
+		
+		if(validateName() == true && validateMessage() == true && emailValidation() == true && phoneValidate() == true && mobileValidate() == true)
+		{	
+			sendMail();
+		}	
+		else
+			return false;	
+		
+	}
+	
+	

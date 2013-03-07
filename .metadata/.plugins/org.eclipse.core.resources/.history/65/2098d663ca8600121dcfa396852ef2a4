@@ -1,0 +1,57 @@
+body {
+	background-color: #FEFEFF
+}
+
+.tagLine{
+	color: #999999;
+}
+
+.coloredHeading{
+	color: #0074CC;
+}
+
+
+.centeredText{
+	text-align:center;
+}
+
+.cogsFontSize{
+	font-size: 300px;
+}
+
+.bellFontSize{
+	font-size: 45px;
+}
+
+.socialIcon{
+	padding-right: 10px;
+}
+
+.inlineHeading{
+	display: inline;
+}
+
+.profileRow{
+	padding-bottom: 30px;
+}
+
+.dropdownIcon{
+	padding-right: 5px;
+}
+
+
+
+/*
+ * define
+ */
+.topnav_container{
+	padding-top: 5px;
+}
+
+.topnav{
+	background-color: #e1801f;
+}
+
+.topnav a{
+	color: white;
+}

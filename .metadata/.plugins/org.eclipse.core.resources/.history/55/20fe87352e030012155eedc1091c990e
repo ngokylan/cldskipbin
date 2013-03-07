@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Price List Shonan Machine</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="Duc Nguyen">
+
+		<!-- Le styles -->
+		<style>
+			body {
+				padding-top: 100px; /* 60px to make the container go all the way to the bottom of the topbar */
+			}
+		</style>
+		<link href="Twitter_BootStrap_2.0.4/css/bootstrap.css" rel="stylesheet">
+		<link href="Twitter_BootStrap_2.0.4/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="FortAwesome-Font-Awesome-ee55c85/css/font-awesome.css" rel="stylesheet"/>
+		<link href="FortAwesome-Font-Awesome-ee55c85/css/font-awesome-ie7.css" rel="stylesheet"/>
+		<link href="custom_style/homepageStyle.css" rel="stylesheet"/>
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<!-- Le fav and touch icons -->
+		<link rel="shortcut icon" href="">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
+
+		<!-- import custom javascript -->
+		<script type="text/javascript" src="custom_js/form/validation.js"></script>
+		<script type="text/javascript" src="custom_js/ajax/xhr.js"></script>
+		<script type="text/javascript" src="custom_js/ajax/ajaxprocess.js"></script>
+
+	</head>
+
+	<body id="body">
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand" href="http://www.hitwebcounter.com/" target="_blank">
+					<img src="http://hitwebcounter.com/counter/counter.php?page=4567248&style=0006&nbdigits=6&type=ip&initCount=771" title="total visits and hits" Alt="total visits and hits"   border="0" >
+					</a>
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+					<a class="brand" href="index.html"><p>Shonan Machine</p><p>湘南　マシン</p></a>
+					<div class="nav-collapse collapse" style="height: 0px; ">
+						<ul class="nav">
+							<li>
+								
+								<a href="index.html"><p>Home</p><p>ホーム</p></a>
+							</li>	
+							
+							<li>
+								<a href="about.html"><p>About</p><p>会社概要</p></a>
+							</li>						
+							<li class="active">
+								<a href="stock.html"><p>Stock</p><p>在庫</p></a>
+							</li>
+							<li>
+								<a href="contact.html"><p align="center">Contact</p><p>お問い合わせ</p></a>
+							</li>
+						</ul>
+						<div class="pull-right">
+							<span id="greetingUsername"></span>
+						</div>
+					</div><!--/.nav-collapse -->
+				</div>
+			</div>
+		</div><!--/Nav Bar-->
+
+		<div class="container">
+			<div class="row hero-unit centeredText">
+				<h1> 在庫 - Stock</h1>
+
+			</div>
+			<div class="row centeredText">
+				<div class="container">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<td class="btn-inverse">No</td>
+								<td class="btn-inverse">Name</td>
+								<td class="btn-inverse">Branch</td>
+								<td class="btn-inverse">Model</td>
+								<td class="btn-inverse">Year</td>
+								<td class="btn-inverse"	>Price (Yen)</td>
+								<td class="btn-inverse"	>Photo</td>
+							</tr>
+							<tr>
+								<td class="btn-inverse">No</td>
+								<td class="btn-inverse">機　械　名</td>
+								<td class="btn-inverse">メーカー</td>
+								<td class="btn-inverse">型 式・仕 様 等</td>
+								<td class="btn-inverse">年 式</td>
+								<td class="btn-inverse"	>金額（円）</td>
+								<td class="btn-inverse"	>写 真（参考）</td>
+							</tr>
+							
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td class="span4">
+									<div id="myCarousel1" class="carousel slide span4">
+						 <!-- Carousel items -->
+									  <div class="carousel-inner">				   		   
+									    <div class="active item">				    	
+									    	<img src="img/hinh_may_ban/.jpg" alt style="width: 300px; height: 220px">
+									    </div>				  
+									    <div class="item">				    	
+									    	<img src="img/hinh_may_ban/.jpg" alt style="width: 300px; height: 220px">
+									    </div>
+									     <div class="item">				    	
+									    	<img src="img/hinh_may_ban/.jpg" alt style="width: 300px; height: 220px">
+									    </div>
+									     <div class="item">				    	
+									    	<img src="img/hinh_may_ban/.jpg" alt style="width: 300px; height: 220px">
+									    </div>
+									    
+									  </div>
+														  
+									  <a class="carousel-control left" href="#myCarousel1" data-slide="prev">&lsaquo;</a>
+									  <a class="carousel-control right" href="#myCarousel1" data-slide="next">&rsaquo;</a>
+									  </div>
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td class="span4">
+									<!-- bat dau copy hinh vao day -->
+									
+									
+									
+									<!-- xong-->
+								</td>
+							</tr><tr>
+								<td>3</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td class="span4">
+									<!-- bat dau copy hinh vao day -->
+									
+									
+									
+									<!-- xong-->
+								</td>
+							</tr><tr>
+								<td>4</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td class="span4">
+									<!-- bat dau copy hinh vao day -->
+									
+									
+									
+									<!-- xong-->
+								</td>
+							</tr><tr>
+								<td>5</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>
+									<!-- bat dau copy hinh vao day -->
+									
+									
+									
+									<!-- xong-->
+								</td>
+							</tr><tr>
+								<td>6</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>
+									<!-- bat dau copy hinh vao day -->
+									
+									
+									
+									<!-- xong-->
+								</td>
+							</tr><tr>
+								<td>7</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>
+									<!-- bat dau copy hinh vao day -->
+									
+									
+									
+									<!-- xong-->
+								</td>
+							</tr><tr>
+								<td>8</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+							</tr><tr>
+								<td>9</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+							</tr><tr>
+								<td>10</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+							</tr><tr>
+								<td>11</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+							</tr><tr>
+								<td>12</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+							</tr><tr>
+								<td>13</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+							</tr><tr>
+								<td>14</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+							</tr><tr>
+								<td>15</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+							</tr><tr>
+								<td>16</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+							</tr><tr>
+								<td>17</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+							</tr>
+							<tr>
+								<td>18</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+							</tr>
+							<tr>
+								<td>19</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+							</tr>
+							<tr>
+								<td>20</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+								<td>-----</td>
+							</tr>
+						</tbody>
+						
+					</table>
+				</div>
+				
+			</div>
+			<hr />
+
+			<footer class="well btn-success">
+				<div class="row">
+					<div class="span2">
+						&nbsp;	
+					</div>
+					<div class="span3">
+						<i class="icon-sitemap"></i><h3 class="inlineHeading"> 連絡先</h3>
+						<address>
+							<h4> 湘南　マシン </h4>
+							<p>〒２５３−０１０１
+								<br />
+								神奈川県 茅ヶ崎市
+								<br />
+								赤羽根　３７６１−１４
+								<br />
+								<abbr title="Phone"> 電話番語: </abbr>
+								0467-53-1393
+								<br />
+								<abbr title="Fax"> Fax: </abbr>
+								0467-51-1199 
+								<br />
+								<abbr title="Email"> Email: </abbr>
+								shonanmachine_jp@yahoo.co.jp
+							</p>
+						</address>
+					</div>
+					<div class="span3">
+						<i class="icon-sitemap"></i><h3 class="inlineHeading"> Contact</h3>
+						<address>
+							<h4> Shonan Machine </h4>
+							<p>
+								3761-14 AKABANE-CHIGASAKI CITY. 
+								<br />
+								KANAGAWA KEN - JAPAN
+								<br />
+								<abbr title="Phone"> Phone: </abbr>
+								0467-53-1393
+								<br />
+								<abbr title="Fax"> Fax: </abbr>
+								0467-51-1199 
+								<br />
+								<abbr title="Email"> Email: </abbr>
+								shonanmachine_jp@yahoo.co.jp
+							</p>
+						</address>
+					</div>
+					<div class="span3">
+						<i class="icon-sitemap"></i><h3 class="inlineHeading">ページ Pages </h3>
+						<ul class="navbar-inverse"  style="color: white">
+							<li>
+								<a href="index.html"  style="color: white">ホーム　&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Home</a>
+							</li>
+							<li>
+								<a href="about.html" style="color: white">会社概要 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;　About</a>
+							</li>
+							<li>
+								<a href="stock.html" style="color: white">在庫　 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  Stock</a>
+							</li>
+							<li>
+								<a href="contact.html" style="color: white">お問い合わせ　 &nbsp;&nbsp;  Contact</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+		</div>
+		<!-- /fluid container -->
+
+		<!-- Le javascript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="Twitter_BootStrap_2.0.4/js/jquery.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-transition.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-alert.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-modal.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-dropdown.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-scrollspy.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-tab.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-tooltip.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-popover.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-button.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-collapse.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-carousel.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-typeahead.js"></script>
+
+	</body>
+</html>

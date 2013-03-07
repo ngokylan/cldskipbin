@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>User</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="Duc Nguyen">
+
+		<!-- Le styles -->
+		<style>
+			body {
+				padding-top: 100px; /* 60px to make the container go all the way to the bottom of the topbar */
+			}
+			
+		</style>
+		<link href="Twitter_BootStrap_2.0.4/css/bootstrap.css" rel="stylesheet">
+		<link href="Twitter_BootStrap_2.0.4/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="FortAwesome-Font-Awesome-ee55c85/css/font-awesome.css" rel="stylesheet"/>
+		<link href="FortAwesome-Font-Awesome-ee55c85/css/font-awesome-ie7.css" rel="stylesheet"/>
+		<link href="custom_style/circleStyle.css" rel="stylesheet" />
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<!-- Le fav and touch icons -->
+		<link rel="shortcut icon" href="">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
+
+		<!-- import custom javascript -->
+		<script type="text/javascript" src="custom_js/form/validation.js"></script>
+		<script type="text/javascript" src="custom_js/ajax/xhr.js"></script>
+		<script type="text/javascript" src="custom_js/ajax/ajaxprocess.js"></script>
+		<script type="text/javascript" src="custom_js/jquery.easing.1.3/jquery.easing.1.3.js"></script>
+	
+
+	</head>
+	<!--<body id="body" onload="<?php echo $callfunction;?>" class="hidden">-->
+	<body>
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+					<a class="brand" href="index.html"><p>Shonan Machine</p><p>湘南　マシン</p></a>
+				
+
+					<div class="nav-collapse collapse" style="height: 0px; ">
+						<ul class="nav">
+							<li>
+								
+								<a href="index.html"><p>Home</p><p>ホーム</p></a>
+							</li>				
+							<li>
+								<a href="about.html"><p>About</p><p>会社概要</p></a>
+							</li>			
+							<li>
+								<a href="stock.html"><p>Stock</p><p>在庫</p></a>
+							</li>
+							<li class="active">
+								<a href="contact.html"><p align="center">Contact</p><p>お問い合わせ</p></a>
+							</li>
+							
+						</ul>
+
+					</div><!--/.nav-collapse -->
+				</div>
+			</div>
+		</div><!--/Nav Bar-->
+
+		<div class="container">
+			<div class="row-fluid">
+				
+				<div class="span12 well">
+					<div class="navbar navbar-static">
+						<div class="navbar-inner">
+							<div class="container" style="width: auto;">
+								<h3 class="btn-inverse">User Details<small> To requrest a change, contact support</small></h3>
+							</div>
+						</div>
+					</div>
+
+					<div class="row-fluid">
+						<div class="span12 offset3">
+							<form id="edit-profile" class="form-horizontal">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label" for="username"><p>Company:</p><p>会社の名前</p> </label>
+										<div class="controls">
+											<p>&nbsp;</p>
+											<input type="text" class="input-xlarge disabled" id="company" placeholder="会社の名前">
+
+										</div>
+										<!-- /controls -->
+									</div>
+									<!-- /control-group -->
+
+									<div class="control-group">
+										<label class="control-label" for="firstname"><p>Name:</p><p>担当者</p></label>
+										<div class="controls">
+											<p>&nbsp;</p>
+											<input type="text" class="input-xlarge disabled" id="name" placeholder="担当者の氏名">
+										</div>
+										<!-- /controls -->
+									</div>
+									<!-- /control-group -->
+
+									<div class="control-group">
+										<label class="control-label" for="lastname"><p>Address:</p><p>会社の住所</p></label>
+										<div class="controls">
+											<p>&nbsp;</p>
+											<input type="text" class="input-xlarge disabled" id="address" placeholder="住所">
+										</div>
+										<!-- /controls -->
+									</div>
+									<!-- /control-group -->
+
+								
+
+									<div class="control-group">
+										<label class="control-label" for="mobilePhone"><p>Email:</p><p>メール</p></label>
+										<div class="controls">
+											<p>&nbsp;</p>
+											<input type="text" class="input-xlarge disabled" id="Email" placeholder="email@yahoo.co.jp">
+										</div>
+										<!-- /controls -->
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="mobilePhone"><p>Phone:</p><p>会社の電話番号</p></label>
+										<div class="controls">
+											<p>&nbsp;</p>
+											<input type="text" class="input-xlarge disabled" id="phone" placeholder="０１２３４５６７８９０">
+										</div>
+										<!-- /controls -->
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="mobilePhone"><p>Mobile:</p><p>携帯電話</p></label>
+										<div class="controls">
+											<p>&nbsp;</p>
+											<input type="text" class="input-xlarge disabled" id="mobile" placeholder="０９０１２３４５６７８">
+										</div>
+										<!-- /controls -->
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="mobilePhone"><p>Website(URL):</p><p>ホームページ</p></label>
+										<div class="controls">
+											<p>&nbsp;</p>
+											<input type="text" class="input-xlarge disabled" id="website" placeholder="www.shonamachine.com" >
+										</div>
+										<!-- /controls -->
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="position"><p>Message:</p><p>お問い合わせ内容</p></label>
+										<div class="controls">
+											<p>&nbsp;</p>
+											<textarea id="message" rows="10" class="input-xxlarge"></textarea>
+
+										</div>
+										<!-- /controls -->
+									</div>
+									<div class="control-group">
+										
+										<div class="controls">
+											<input type="Submit" value="Submit" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<input type="reset" value="Reset" />
+										</div>
+										<div>&nbsp;</div>
+										<div class="controls">
+											<p>送信&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											リセツト
+											</p>
+										</div>
+										<!-- /controls -->
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				
+
+				</div>
+				<div class="span2">
+					<!--ad space-->
+				</div>
+			</div>
+			<hr />
+			<footer class="well btn-success">
+				<div class="row">
+					<div class="span2">
+						&nbsp;		
+					</div>
+					<div class="span3">
+						<i class="icon-sitemap"></i><span class="span2 offset1"><h3> 連絡先</h3></span>
+						<address>
+							<h4> 湘南　マシン </h4>
+							<p>〒２５３−０１０１
+								<br />
+								神奈川県 茅ヶ崎市
+								<br />
+								赤羽根　３７６１−１４
+								<br />
+								<abbr title="Phone"> 電話番語: </abbr>
+								0467-53-1393
+								<br />
+								<abbr title="Fax"> Fax: </abbr>
+								0467-51-1199 
+								<br />
+								<abbr title="Email"> Email: </abbr>
+								shonanmachine_jp@yahoo.co.jp
+							</p>
+						</address>
+					</div>
+					<div class="span3">
+						<i class="icon-sitemap"></i><h3 class="inlineHeading"> Contact</h3>
+						<address>
+							<h4> Shonan Machine </h4>
+							<p>
+								3761-14 AKABANE-CHIGASAKI CITY. 
+								<br />
+								KANAGAWA KEN - JAPAN
+								<br />
+								<abbr title="Phone"> P: </abbr>
+								0467-53-1393
+								<br />
+								<abbr title="Fax"> F: </abbr>
+								0467-51-1199 
+								<br />
+								<abbr title="Email"> Email: </abbr>
+								shonanmachine_jp@yahoo.co.jp
+							</p>
+						</address>
+					</div>
+					<div class="span3">
+						<i class="icon-sitemap"></i><h3 class="inlineheading">ページ Pages </h3>
+						<ul class="navbar-inverse"  style="color: white">
+							<li>
+								<a href="index.html"  style="color: white">ボーム　&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Home</a>
+							</li>
+							<li>
+								<a href="about.html" style="color: white">会社概要 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; About</a>
+							</li>
+							<li>
+								<a href="stock.html" style="color: white">在庫　 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  Stock</a>
+							</li>
+							<li>
+								<a href="contact.html" style="color: white">お問い合わせ　 &nbsp;&nbsp;  Contact</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<!-- /fluid container -->
+
+		<!-- Le javascript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="Twitter_BootStrap_2.0.4/js/jquery.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-transition.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-alert.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-modal.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-dropdown.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-scrollspy.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-tab.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-tooltip.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-popover.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-button.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-collapse.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-carousel.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-typeahead.js"></script>
+
+	</body>
+</html>

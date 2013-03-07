@@ -1,0 +1,163 @@
+    // contact support validation form
+	var contactForm = false;
+
+	function validateName()
+	{
+		  var name = document.getElementById("name").value;
+		  var nameErr = document.getElementById("nameErr");
+		  if(name == "")
+		  {
+		  		nameErr.innerHTML = "Email require !";
+		  		nameErr.className = "collapse in";
+		  		return false;
+		  }
+	}
+	function validateMessage()
+	{
+		  var message = document.getElementById("message").value;
+		  var messageErr = document.getElementById("messageErr");
+		  if(message == "")
+		  {
+		  		messageErr.innerHTML = "Email require !";
+		  		messageErr.className = "collapse in";
+		  		return false;
+		  }
+	}
+	
+	// login form validation
+	function emailValidation()
+	{
+		  
+		  var Email = document.getElementById("Email").value;
+		  var emailErr = document.getElementById("Email");
+
+		  
+		  var x= emailInput.value;
+		  var atpos=x.indexOf("@");
+		  var dotpos=x.lastIndexOf(".");
+		  if(Email == "")
+		  {
+		  		emailErr.innerHTML = "Email require !";
+		  		emailErr.className = "collapse in";
+		  		return false;
+		  }
+		  else
+		  {
+		  		if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+			  	{
+			      	emailErr.innerHTML = "Invalid email address !";
+				  	emailErr.className = "collapse in";
+				  	return false;
+			 	}
+			 	else
+			    {
+			    	emailErr.className = "collapse";
+			    	return true;
+			    } 	
+		  }
+	}
+	
+	
+	
+	
+	
+	
+	function phoneValidate()
+	{
+		var phone = document.getElementById("phone").value;
+		var phoneErr = document.getElementById("phoneErr");
+		var error = false;
+		
+		//validate mobile number
+		if(phone == "")
+		{
+			mobileErrDesc.innerHTML = "Phone number require!";
+	  		mobileErr.className = "collapse in";
+	  		error = true;
+		}
+		else if(isNaN(phone))
+		{
+			mobileErrDesc.innerHTML = "Must be a number!";
+	  		mobileErr.className = "collapse in";
+	  		error = true;
+		}
+		else
+		{
+			if(!(isNaN(phone)))
+			{
+				if( phone.length == 11)
+				{
+					phoneErr.className = "collapse";
+					error = true;					
+				}
+				else
+				{
+					phoneErr.innerHTML = "Invalid contact number !";
+			  		phoneErr.className = "collapse in";
+			  		error = false;
+				}
+			}			
+		}
+		return error;
+	}
+	
+	function mobileValidate()
+	{
+		var phone = document.getElementById("phone").value;
+		var phoneErr = document.getElementById("phoneErr");
+		var error = false;
+		
+		//validate mobile number
+		if(phone == "")
+		{
+			mobileErrDesc.innerHTML = "Phone number require!";
+	  		mobileErr.className = "collapse in";
+	  		error = true;
+		}
+		else if(isNaN(phone))
+		{
+			mobileErrDesc.innerHTML = "Must be a number!";
+	  		mobileErr.className = "collapse in";
+	  		error = true;
+		}
+		else
+		{
+			if(!(isNaN(phone)))
+			{
+				if( phone.length == 11)
+				{
+					phoneErr.className = "collapse";
+					error = true;					
+				}
+				else
+				{
+					phoneErr.innerHTML = "Invalid contact number !";
+			  		phoneErr.className = "collapse in";
+			  		error = false;
+				}
+			}			
+		}
+		return error;
+	}
+
+
+	
+	function supportFormValidation()
+	{
+		supportValName();
+			
+		supportValContactNumber();
+		
+		supportValEmailAddress();
+		
+		supportValDescription();
+		
+		if(supportNameVal == true && supportContactNumVal == true && supportEmailVal == true && supportDescriptionVal == true)
+		{	
+			supportRequest();
+		}		
+		else
+			return false;
+	}
+	
+	

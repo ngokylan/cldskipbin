@@ -1,0 +1,204 @@
+    // contact support validation form
+
+
+	function validateName()
+	{
+		  var name = document.getElementById("name").value;
+		  var nameErr = document.getElementById("nameErr");
+		  if(name == "")
+		  {
+		  		nameErr.innerHTML = "Name require !";
+		  		nameErr.className = "label-important label collapse in";
+		  		return false;
+		  }
+		  else
+		  {
+		  	nameErr.className = "ollapse";
+		  	nameErr.innerHTML = "";
+		  	return true;
+		  }
+	}
+	function validateMessage()
+	{
+		  var message = document.getElementById("message").value;
+		  var messageErr = document.getElementById("messageErr");
+		  if(message == "")
+		  {
+		  		messageErr.innerHTML = "Message require !";
+		  		messageErr.className = "label-important label collapse in";
+		  		return false;
+		  }
+		  else
+		  {	
+		  	messageErr.className = "collapse";
+		  	messageErr.innerHTML = "";
+		  	return true;
+		  }
+	}
+	
+	// login form validation
+	function emailValidation()
+	{
+		  
+		  var Email = document.getElementById("email");
+		  var emailErr = document.getElementById("emailErr");
+
+		  
+		  var x= Email.value;
+		  var atpos=x.indexOf("@");
+		  var dotpos=x.lastIndexOf(".");
+		  if(x == "")
+		  {
+		  		emailErr.innerHTML = "Email require !";
+		  		emailErr.className = "label-important label collapse in";
+		  		return false;
+		  }
+		  else
+		  {
+		  		if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+			  	{
+			      	emailErr.innerHTML = "Invalid email address !";
+				  	emailErr.className = "label-important label collapse in";
+				  	return false;
+			 	}
+			 	else
+			    {
+			    	emailErr.className = "collapse";
+			    	emailErr.innerHTML = "";
+			    	return true;
+			    } 	
+		  }
+	}
+	
+	
+	
+	
+	
+	
+	function phoneValidate()
+	{
+		var phone = document.getElementById("phone").value;
+		var phoneErr = document.getElementById("phoneErr");
+		var error = true;
+		
+		//validate mobile number
+		if(phone == "")
+		{
+			phoneErr.innerHTML = "Phone number require!";
+	  		phoneErr.className = "label-important label collapse in";
+	  		error = false;
+		}
+		else if(isNaN(phone))
+		{
+			phoneErr.innerHTML = "Must be a number!";
+	  		phoneErr.className = "label-important label collapse in";
+	  		error = false;
+		}
+		else
+		{
+			if(!(isNaN(phone)))
+			{
+				if( phone.length == 11)
+				{
+					phoneErr.className = "collapse";
+					phoneErr.innerHTML = "";
+					error = true;					
+				}
+				else
+				{
+					phoneErr.innerHTML = "Invalid contact number !";
+			  		phoneErr.className = "label-important label collapse in";
+			  		error = false;
+				}
+			}			
+		}
+		return error;
+	}
+	
+	function mobileValidate()
+	{
+		var mobile = document.getElementById("mobile").value;
+		var mobileErr = document.getElementById("mobileErr");
+		var error = true;
+		
+		//validate mobile number
+		if(mobile == "")
+		{
+			mobileErr.innerHTML = "Mobile phone number require!";
+	  		mobileErr.className = "label-important label collapse in";
+	  		error = false;
+		}
+		else if(isNaN(mobile))
+		{
+			mobileErr.innerHTML = "Must be a number!";
+	  		mobileErr.className = "label-important label collapse in";
+	  		error = false;
+		}
+		else
+		{
+			if(!(isNaN(mobile)))
+			{
+				if( mobile.length == 11)
+				{
+					mobileErr.className = "collapse";
+					mobileErr.innerHTML = "";
+					error = true;					
+				}
+				else
+				{
+					mobileErr.innerHTML = "Invalid contact number !";
+			  		mobileErr.className = "label-important label collapse in";
+			  		error = false;
+				}
+			}			
+		}
+		return error;
+	}
+
+	function sendMail() {
+		var company = document.getElementById('company').value;
+		var name = document.getElementById('name').value;
+		var address = document.getElementById('address').value;
+		var email = document.getElementById('email').value;
+		var phone = document.getElementById('phone').value;
+		var mobile = document.getElementById('mobile').value;
+		var website = document.getElementById('website').value;
+		var message = document.getElementById('message').value;
+		var body = "Company: " + company + " Name: " + name + " Address: " + address + " Email: " + email + " Phone: " +phone+" Mobile: "+mobile+" Website: " + website+ "    Message: " + message;
+		
+    var link = "mailto:n_mduc@yahoo.com"
+             + "?cc=myCCaddress@example.com"
+             + "&subject=" + escape("Contact")
+             + "&body=" + escape(body)
+    ;
+	alert("Message Sent!");
+    window.location.href = link;
+    
+    company = "";
+		name  = "";
+		address  = "";
+		email  = "";
+		phone  = "";
+		mobile  = "";
+		website  = "";
+	 	message = "";
+}
+	
+	function contactForm()
+	{
+		var name = validateName();
+		var message = validateMessage();
+		var email = emailValidation();
+		var phone = phoneValidate();
+		var mobile = mobileValidate();
+		
+		if(name == true && message == true && email == true && phone == true && mobile == true)
+		{	
+			sendMail();
+		}	
+		else
+			return false;	
+		
+	}
+	
+	

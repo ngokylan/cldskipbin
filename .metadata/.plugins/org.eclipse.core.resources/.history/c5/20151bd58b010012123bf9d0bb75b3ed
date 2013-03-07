@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>About Shonan Machine</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="Duc Nguyen">
+
+		<!-- Le styles -->
+		<style>
+			body {
+				padding-top:100px; /* 60px to make the container go all the way to the bottom of the topbar */
+			}
+		</style>
+		<link href="Twitter_BootStrap_2.0.4/css/bootstrap.css" rel="stylesheet">
+		<link href="Twitter_BootStrap_2.0.4/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="FortAwesome-Font-Awesome-ee55c85/css/font-awesome.css" rel="stylesheet"/>
+		<link href="FortAwesome-Font-Awesome-ee55c85/css/font-awesome-ie7.css" rel="stylesheet"/>
+		<link href="custom_style/homepageStyle.css" rel="stylesheet"/>
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<!-- Le fav and touch icons -->
+		<link rel="shortcut icon" href="">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
+
+		<!-- import custom javascript -->
+		<script type="text/javascript" src="custom_js/form/validation.js"></script>
+		<script type="text/javascript" src="custom_js/ajax/xhr.js"></script>
+		<script type="text/javascript" src="custom_js/ajax/ajaxprocess.js"></script>
+
+	</head>
+
+	<body id="body">
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand" href="http://www.hitwebcounter.com/" target="_blank">
+					<img src="http://hitwebcounter.com/counter/counter.php?page=4567248&style=0006&nbdigits=6&type=ip&initCount=771" title="total visits and hits" Alt="total visits and hits"   border="0" >
+					</a>
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+					<a class="brand" href="index.html"><p>Shonan Machine</p><p>湘南　マシン</p></a>
+					<div class="nav-collapse collapse" style="height: 0px; ">
+						<ul class="nav">
+							<li>
+								
+								<a href="index.html"><p>Home</p><p>ホーム</p></a>
+							</li>							
+							<li class="active">
+								<a href="about.html"><p>About</p><p>会社概要</p></a>
+							</li>
+							<li>
+								<a href="stock.html"><p>Stock</p><p>在庫</p></a>
+							</li>
+							<li>
+								<a href="contact.html"><p align="center">Contact</p><p>お問い合わせ</p></a>
+							</li>
+							
+						</ul>
+					</div><!--/.nav-collapse -->
+				</div>
+			</div>
+		</div><!--/Nav Bar-->
+
+		<div class="container">
+			<div class="row hero-unit centeredText">
+				<h1> ご挨拶　</h1>
+				<p class="lead">
+					貴社ますますご盛栄のこととお喜び申し上げます。 さてこのたび、私どもより、 工作機械 、板金機械の中古品買い取り,輸出専門。 今後皆様のご期待に沿いますよう、 何とぞ格別のご支援、お引立てを賜りますようお願い申し上げます。
+					
+				</p>
+				<div class="span10 offset5">
+					<h1>
+							<label class="control-label" for="position"><p>Director:
+								FUJI YURI
+							</p><p>代表 : 富士　ゆり</p></label>
+						</h1>	
+				</div>
+			</div>
+			<div class="row">
+				<div class="span6">
+					<i class="icon-plus icon-large coloredHeading"></i><h2 class="inlineHeading"> 営業地区　</h2>
+					<p>
+						東京都内、神奈川県、静岡県、山梨県、埼玉県、千葉県、群馬県、。
+					</p>
+					
+				</div>
+				<div class="span6">
+					<i class="icon-plus icon-large coloredHeading"></i><h2 class="inlineHeading"> Equipment</h2>
+					<p>
+						<h3> 設備車両 </h3>
+						<p>
+							Pull out the company's machinery, equipment 
+							installation: (truck with 4,9 t · 2,9 t UNIC) Two heavy-duty truck 1- 
+							4T, 2,5 t, 1,5 t:. 2-lift trucks and other machinery moving rollers set number 3. . Horizontal leveling machine.
+							大型８トン１台、大型６トン車１台、４トンフォークリフト１台
+							１、２tフォークリフト、１、５トンフォークリフト。
+						</p>
+						<br />
+						<br />
+						<h3>鍛圧機械 * 工作機械　＊　中古建設機械 </h3>
+						<p>
+							見積もり無料！現金買い取り.現場渡しで良い。廃業、片付け、是非お任せ下さい。
+						</p>
+					</p>
+				</div>
+			</div>
+
+			<hr />
+
+			<div class="row">
+				<div class="centeredText">
+					<h2 class="inlineHeading"> Equipment </h2>
+				</div>
+
+				<div class="row profileRow">
+					<div class="span6">
+						<img src="img/equip/1.jpg" style="width:300px; height:200px"/>
+					</div>
+					<div class="span6">
+						<h3> 8 Ton Car Lorry　大賀８t車 </h3>
+						<p>
+							Carrying a big machine　大型機械運搬
+						</p>
+					</div>
+				</div>
+				<div class="row profileRow">
+					<div class="span6">
+						<img src="img/equip/2.jpg" style="width:300px; height:200px" />
+					</div>
+					<div class="span6">
+						<h3> 4,9 Ton Truck、４、９トン　クレン付車</h3>
+						<p>
+							Carrying with 8 Ton UNIC of large
+						</p>
+					</div>
+				</div>	
+				<div class="row profileRow">
+					<div class="span6">
+						<img src="img/equip/3.jpg" style="width:300px; height:200px" />
+					</div>
+					<div class="span6">
+						<h3> 6 Ton large truck　大賀６トン車</h3>
+						<p>
+							Carrying with 2,9 Ton UNIC for vehicles carrying the machine enters Tokyo, in narrow streets　東京都内
+							狭い道短いボーデイ車両使用機械運搬
+						</p>
+					</div>
+				</div>		
+				<div class="row profileRow">
+					<div class="span6">
+						<img src="img/equip/4.jpg" style="width:300px; height:200px" />
+					</div>
+					<div class="span6">
+						<h3> 4 Ton and 6 Ton forklift truck loading　４トンフォークリフト</h3>
+						<p>
+							It's convenient to lift and load heavy substances on either truck or into container
+						</p>
+					</div>
+				</div>		
+				
+			</div>
+
+			<hr />
+
+			<footer class="well btn-success">
+				<div class="row">
+					<div class="span2">
+						&nbsp;	
+					</div>
+					<div class="span3">
+						<i class="icon-sitemap"></i><h3 class="inlineHeading"> 連絡先</h3>
+						<address>
+							<h4> 湘南　マシン </h4>
+							<p>〒２５３−０１０１
+								<br />
+								神奈川県 茅ヶ崎市
+								<br />
+								赤羽根　３７６１−１４
+								<br />
+								<abbr title="Phone"> 電話番語: </abbr>
+								0467-53-1393
+								<br />
+								<abbr title="Fax"> Fax: </abbr>
+								0467-51-1199 
+								<br />
+								<abbr title="Email"> Email: </abbr>
+								shonanmachine_jp@yahoo.co.jp
+							</p>
+						</address>
+					</div>
+					<div class="span3">
+						<i class="icon-sitemap"></i><h3 class="inlineHeading"> Contact</h3>
+						<address>
+							<h4> Shonan Machine </h4>
+							<p>
+								3761-14 AKABANE-CHIGASAKI CITY. 
+								<br />
+								KANAGAWA KEN - JAPAN
+								<br />
+								<abbr title="Phone"> P: </abbr>
+								0467-53-1393
+								<br />
+								<abbr title="Fax"> F: </abbr>
+								0467-51-1199 
+								<br />
+								<abbr title="Email"> Email: </abbr>
+								shonanmachine_jp@yahoo.co.jp
+							</p>
+						</address>
+					</div>
+					<div class="span3">
+						<i class="icon-sitemap"></i><h3 class="inlineHeading">ページ Pages </h3>
+						<ul class="navbar-inverse"  style="color: white">
+							<li>
+								<a href="index.html"  style="color: white">ーム　&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Home</a>
+							</li>
+							<li>
+								<a href="about.html" style="color: white">会社概要 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;　About</a>
+							</li>
+							<li>
+								<a href="stock.html" style="color: white">在庫　 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  Stock</a>
+							</li>
+							<li>
+								<a href="contact.html" style="color: white">お問い合わせ　 &nbsp;&nbsp;  Contact</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+		</div>
+		<!-- /fluid container -->
+
+		<!-- Le javascript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="Twitter_BootStrap_2.0.4/js/jquery.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-transition.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-alert.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-modal.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-dropdown.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-scrollspy.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-tab.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-tooltip.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-popover.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-button.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-collapse.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-carousel.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap-typeahead.js"></script>
+
+	</body>
+</html>

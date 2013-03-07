@@ -1,0 +1,982 @@
+
+/*
+Student Name: Minh Duc Nguyen
+	Student ID: 171001x
+	Page: ajaxprocess.js
+	Main function: 
+      - create DOM table
+	  - create row and append to table
+	  - send request between client and server
+*/
+
+//detecting browser
+	browserName = "";
+	verOffset = "";
+	nAgt = navigator.userAgent;
+	var loginUserInfo = "";
+	var loginUserID = "";
+	
+	// In MSIE, the true version is after "MSIE" in userAgent
+	if ((verOffset=nAgt.indexOf("MSIE"))!=-1) 
+	{
+	 browserName = "Microsoft Internet Explorer";	
+	}
+	// In Chrome, the true version is after "Chrome" 
+	else if ((verOffset=nAgt.indexOf("Chrome"))!=-1) 
+	{
+	 browserName = "Chrome";	
+	}
+	// In Safari, the true version is after "Safari" or after "Version" 
+	else if ((verOffset=nAgt.indexOf("Safari"))!=-1) 
+	{
+	 browserName = "Safari";	
+	}
+	// In Firefox, the true version is after "Firefox" 
+	else if ((verOffset=nAgt.indexOf("Firefox"))!=-1) 
+	{
+	 browserName = "Firefox";	
+	}
+ 
+// file ajaxprocess.js 
+// using POST method 
+
+
+//set Request Progress Icon for login form
+function setRequestProgressIcon(status, divContainer, divrequestProgress, msg)
+{
+	if(status == true)
+	{
+		//set progress gif		
+		divContainer.innerHTML = "<span class='span10'><img src='img/ajax-loader.gif' alt=''> ... processing </span>";		
+		divrequestProgress.className = "collapse in";
+	}
+	else
+	{
+		divContainer.innerHTML = "<div id='emailErr' class='collapse in'><span id='emailErrDesc' class='label label-important'><font size='2px'>"+msg+"</font></span></div>";
+	}
+}
+
+//set Request Progress Icon for greeting login user icon on right top of everypage when user first time open
+function setRequestGetCookiesIcon(status, divContainer)
+{
+	if(status == true)
+	{
+		//set progress gif		
+		divContainer.innerHTML = "<img src='img/ajax-loader.gif' alt='' style='width: 30px>'";	
+	}
+	else
+	{
+		divContainer.innerHTML = "";
+	}
+}
+
+function loginRequest()
+{	
+	var requestProgressDivContainer = document.getElementById("requestProgressDivContainer");	
+	var requestProgressDiv = document.getElementById("requestProgressDiv");
+	//set Request Progress Icon
+	setRequestProgressIcon(true, requestProgressDivContainer, requestProgressDiv, "");
+	
+	var xhr = createRequest(); 
+	var dataSource = "https://ccn.keytrust.com.au/cgi-bin/api?";
+	var emailInput = document.getElementById("emailInput").value;
+	var passwordInput = document.getElementById("passwordInput").value;
+	var myDiv = document.getElementById("myDiv");
+	var rememberCheckBox = document.getElementById("rememberCheckBox");
+	if(xhr) 
+	{ 	  				 
+		  var itemList = "";
+		  var largeArray = "";
+		  var field = "";
+		  var requestbody = "page=10&username="+encodeURIComponent(emailInput) + "&password=" + encodeURIComponent(passwordInput); 		 
+		  xhr.open("GET", dataSource + requestbody, true);
+		  //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 	 	
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 					   						
+					var tempt = xhr.responseText;
+					/*
+					 *•	<int: code> indicating success or error:
+							o	0 if user authenticates ok
+							o	1 if username (i.e. email address) unknown
+							o	2 if password doesn't match/ 2FA fails
+							o	4 if couldn't contact 2FA service 
+							o	5 if other error
+						•	<string: token> security token to use with other API calls
+						•	<int: loggedin> the user’s ID						 
+					 */
+					tempt = tempt.replace(" ", "");	
+					var tempt2 = tempt.split(",");		
+					
+					var loginStatus = tempt2[0];	
+					var userid = tempt2[2];
+					userid = userid.replace(" ", "");
+					userid = userid.replace("\n", "");
+					var token = tempt2[1];		
+					token = token.replace(" ", "");
+								
+					if(loginStatus == 0)
+					{
+						if(rememberCheckBox.checked == 1)
+						{
+							setCookie("userid",userid,1);
+							setCookie("token",token,1);
+						}	
+						
+						//read cookie and send request to get username 
+						cookieLoginRequestLoginPage(userid, token, false);
+						// this variable "loginUserInfo" will be filled with return username 
+						
+						//assign to global userid variable
+						loginUserID = userid;
+					}
+					else
+					{
+						//set Request Progress Icon
+						setRequestProgressIcon(false, requestProgressDivContainer, requestProgressDiv, "Wrong username or password!");
+					}
+					
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(); 
+	} // end if 		
+}
+
+
+//read cookie and send request for login page
+
+function cookieLoginRequestLoginPage(userid, tokenid, setUserNameCommand)
+{	
+	var xhr = createRequest(); 
+	var dataSource = "https://ccn.keytrust.com.au/cgi-bin/api?";
+	if(xhr) 
+	{ 	  				
+		/* Get user information
+		 * Parameters:
+			•	Page=39
+			•	Loggedin=<ID of current user>
+			•	Token=<security token for current user>
+			•	[Usid=<ID of user that details are wanted from>]			
+		 */ 
+		  var itemList = "";
+		  var largeArray = "";
+		  var field = "";
+		  var requestbody = "page=39&loggedin="+userid + "&token=" + tokenid;
+		  xhr.open("GET", dataSource + requestbody, true);
+		  //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 	 	
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 					   						
+					var tempt = xhr.responseText;					
+					/*
+					 *•	Returns:
+						•	<string:name>
+						•	<string: organization>
+						•	<string: role>
+						•	<int: available>:
+								o	0 is not available (i.e. not logged in)
+								o	1 is available (i.e. logged in)
+						o	>2 indicates number of minutes after which user will be available				 
+					 */
+					
+					var tempt2 = tempt.split(",");							
+					loginUserInfo = tempt2[0];
+					
+					//assign to global userid variable
+					loginUserID = userid;
+					
+					var token = tokenid;
+					token = token.replace(" ","");
+											
+					//send request to record session at server								
+					userid = userid.replace(" ","");
+					
+							
+					if(setUserNameCommand == 1)
+						requestSessionLoginPage(userid, loginUserInfo, token, false);	
+					else
+						requestSessionLoginPage(userid, loginUserInfo, token, true);
+								
+										
+					
+					
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(); 
+	} // end if 		
+}
+
+//send request to record session at server
+function requestSessionLoginPage(userid, username, token, navCommand)
+{
+	//assign to global userid variable
+	loginUserID = userid;
+	
+	var xhr = createRequest(); 
+	if(xhr) 
+	{ 	  		  
+		  var requestbody ="userid="+encodeURIComponent(userid)+"&username="+encodeURIComponent(username)+"&token="+encodeURIComponent(token); 		 
+		  xhr.open("POST", "process/loginSession.php", true); 
+		  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 				
+			   		if(xhr.responseText == "success")
+			   		{			   			
+			   			ldapAuthentication(userid, username, navCommand);			   			
+			   		}	
+			   		
+			   		//****************call function from  teleSock/custom_js/channels.js  to login, subscribing and auth to response channel;
+			   		if((xhr.responseText != "success") && (xhr.responseText != "fail"))
+			   		{
+			   			ldapAuthentication(userid, username, navCommand);		
+			   		}	
+			   		if(xhr.responseText == "fail")
+			   		{
+			   			//set Request Progress Icon
+			   			var requestProgressDivContainer = document.getElementById("requestProgressDivContainer");	
+						var requestProgressDiv = document.getElementById("requestProgressDiv");
+						setRequestProgressIcon(false, requestProgressDivContainer, requestProgressDiv, "Wrong username or password!");
+			   		}	
+									
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(requestbody); 
+	 } // end if 
+	
+}
+
+
+
+
+//read cookie and send request to get username 
+
+function cookieLoginRequest(userid, tokenid, setUserNameCommand)
+{	
+	var xhr = createRequest(); 
+	var dataSource = "https://ccn.keytrust.com.au/cgi-bin/api?";
+	if(xhr) 
+	{ 	  				
+		/* Get user information
+		 * Parameters:
+			•	Page=39
+			•	Loggedin=<ID of current user>
+			•	Token=<security token for current user>
+			•	[Usid=<ID of user that details are wanted from>]			
+		 */ 
+		  var itemList = "";
+		  var largeArray = "";
+		  var field = "";
+		  var requestbody = "page=39&loggedin="+userid + "&token=" + tokenid;
+		  xhr.open("GET", dataSource + requestbody, true);
+		  //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 	 	
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 					   						
+					var tempt = xhr.responseText;					
+					/*
+					 *•	Returns:
+						•	<string:name>
+						•	<string: organization>
+						•	<string: role>
+						•	<int: available>:
+								o	0 is not available (i.e. not logged in)
+								o	1 is available (i.e. logged in)
+						o	>2 indicates number of minutes after which user will be available				 
+					 */
+					
+					var tempt2 = tempt.split(",");							
+					loginUserInfo = tempt2[0];
+					
+					var token = tokenid;
+					token = token.replace(" ","");
+					
+					if (loginUserInfo!=null && loginUserInfo!="" && setUserNameCommand == 1)
+					{		
+						setGreetingUsername(loginUserInfo);
+					}
+					
+					//send request to record session at server								
+					userid = userid.replace(" ","");
+					
+							
+					if(setUserNameCommand == 1)
+						requestSession(userid, loginUserInfo, token, false);	
+					else
+						requestSession(userid, loginUserInfo, token, true);
+								
+										
+					
+					
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(); 
+	} // end if 		
+}
+
+function setCookie(c_name,value, exdays)
+{
+	c_name = c_name.replace("\n", ""); 
+	c_name = c_name.replace(" ", ""); 
+	value = value.replace("\n", "");
+	value = value.replace(" ", "");
+	var exdate=new Date();
+	exdate.setTime(exdate.getTime() + (exdays *  24 * 60 *60*1000));
+	var expires=  ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+	var tempt = c_name + "=" + value + expires;		
+	document.cookie= tempt;	
+}
+
+function getCookie()
+{			
+	var ARRcookies=document.cookie.split(";");
+	var strUserID = "";
+	var userid = "";
+	var tokenid = "";
+	var i;
+	for (i=0;i<ARRcookies.length;i++)
+	{			
+		strUserID=ARRcookies[i].split("=")[0];	    
+		strUserID = strUserID.replace(" ", "");	 
+	    if (strUserID=="userid")
+	    {
+	    	userid=ARRcookies[i].split("=")[1];	 
+	    }
+	    if(strUserID=="token")
+	    {
+	    	var tempt = ARRcookies[i];
+	    	tempt = tempt.replace(" ","");
+	    	tempt = tempt.replace("token=","");	    	
+    		tokenid = 	tempt;	
+	    }
+	}
+	
+	
+	if(userid != "" && tokenid != "")   
+	{
+		cookieLoginRequest(userid, tokenid, true);
+	}	
+	else 
+	{	  	
+    	setGreetingUsername(null);	    
+	}	
+}
+
+function checkCookie(command, userid)
+{
+	//display HTML after process javascript
+	var body = document.getElementById("body");
+	body.className = "";
+	
+	if(command == 1)
+	{
+		setGreetingUsername("loading");
+		getCookie();	
+	}
+	else
+	{
+		if (userid!=null && userid!="")
+		{		
+			setGreetingUsername(userid);
+		}
+		else
+		{
+			setGreetingUsername(null);
+		}
+	}
+}
+
+function setGreetingUsername(name)
+{
+	var greetingUsername = document.getElementById("greetingUsername");
+	
+	if(name != null && name != "loading" )
+	{		
+		var tempt = '<div class="btn-group pull-right dropdown">'+
+							 ' <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">'+
+							    '<i class="icon-user-md dropdownIcon"></i> ' + name+
+							   '   <b class="caret"></b>'+
+							   '  </a>'+
+							 '  <ul id="menu1" class="dropdown-menu">'+
+							   '    <li><a href="index.php">User Home</a></li>'+
+							   '    <li><a href="contact.php">Contact Support</a></li>'+							  
+							  '    <li class="divider"></li>'+
+							   '    <li><a href="#" onclick="requestLogout();">Sign Out</a></li>'+
+							 '   </ul>'+
+					'</div';	
+		
+		greetingUsername.innerHTML = tempt;
+	}
+	else if(name == "loading")
+	{
+		greetingUsername.innerHTML = '<a class="btn btn-primary" href="index.php"><img src="img/cookieLogin.gif" alt="" style="width: 12px"></a>';	
+	}
+	else
+	{
+		greetingUsername.innerHTML = '<a class="btn btn-primary" href="login.php"> <i class="icon-user-md"></i> Login </a>';	
+	}
+		
+}
+
+function eraseAllCookie() 
+{
+	var cookies = document.cookie.split(";");
+	for (var i = 0; i < cookies.length; i++)
+	  eraseCookie(cookies[i].split("=")[0]);
+	 
+}
+
+function eraseCookie(name) 
+{
+    setCookie(name,"",-1);
+}
+
+
+//send request to record session at server
+function requestSession(userid, username, token, navCommand)
+{
+	var xhr = createRequest(); 
+	if(xhr) 
+	{ 	  		  
+		  var requestbody ="userid="+encodeURIComponent(userid)+"&username="+encodeURIComponent(username)+"&token="+encodeURIComponent(token); 		 
+		  xhr.open("POST", "process/loginSession.php", true); 
+		  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 				
+			   		if(xhr.responseText == "success")
+			   		{			   			
+			   			ldapAuthentication(userid, username, navCommand);			   			
+			   		}	
+			   		
+			   		//****************call function from  teleSock/custom_js/channels.js  to login, subscribing and auth to response channel;
+			   		if((xhr.responseText != "success") && (xhr.responseText != "fail"))
+			   		{
+			   			var channel_id = xhr.responseText;
+			   			login(channel_id, channel_id, false, false, userid, userid);
+			   			
+			   			//call function to load the entire activities for this user from database
+			   			loadActivity();
+			   		}	
+			   		if(xhr.responseText == "fail")
+			   		{
+			   			//set Request Progress Icon
+			   			var requestProgressDivContainer = document.getElementById("requestProgressDivContainer");	
+						var requestProgressDiv = document.getElementById("requestProgressDiv");
+						setRequestProgressIcon(false, requestProgressDivContainer, requestProgressDiv, "Wrong username or password!");
+			   		}	
+									
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(requestbody); 
+	 } // end if 
+	
+}
+
+
+function readCookieOrNavLogin(checkCommand)
+{
+	if(checkCommand == 1)
+	{		
+		getCookieOrNavLogin();	
+	}	
+}
+
+function getCookieOrNavLogin()
+{			
+	var ARRcookies=document.cookie.split(";");
+	//navigate to login.php in case there is no cookie
+	if(ARRcookies.length < 1)
+	{					
+		
+	}
+	var strUserID = "";
+	var userid = "";
+	var tokenid = "";
+	var i;
+	for (i=0;i<ARRcookies.length;i++)
+	{			
+		strUserID=ARRcookies[i].split("=")[0];	    
+		strUserID = strUserID.replace(" ", "");	 
+	    if (strUserID=="userid")
+	    {
+	    	userid=ARRcookies[i].split("=")[1];	 
+	    }
+	    if(strUserID=="token")
+	    {
+	    	var tempt = ARRcookies[i];
+	    	tempt = tempt.replace(" ","");
+	    	tempt = tempt.replace("token=","");	    	
+    		tokenid = 	tempt;	
+	    }
+	}
+	
+	
+	if(userid != "" && tokenid != "")   
+	{
+		getCookieOrNavLoginRequest(userid, tokenid, true);
+	}	
+	else
+	{
+		window.location = 'login.php';		
+	}
+}
+
+function getCookieOrNavLoginRequest(userid, tokenid, setUserNameCommand)
+{	
+	setGreetingUsername("loading");
+	//display HTML after process javascript
+	var body = document.getElementById("body");
+	body.className = "";
+	
+	var xhr = createRequest(); 
+	var dataSource = "https://ccn.keytrust.com.au/cgi-bin/api?";
+	if(xhr) 
+	{ 	  				
+		/* Get user information
+		 * Parameters:
+			•	Page=39
+			•	Loggedin=<ID of current user>
+			•	Token=<security token for current user>
+			•	[Usid=<ID of user that details are wanted from>]			
+		 */ 
+		  var itemList = "";
+		  var largeArray = "";
+		  var field = "";
+		  var requestbody = "page=39&loggedin="+userid + "&token=" + tokenid;
+		  xhr.open("GET", dataSource + requestbody, true);
+		  //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 	 	
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 					   						
+					var tempt = xhr.responseText;					
+					/*
+					 *•	Returns:
+						•	<string:name>
+						•	<string: organization>
+						•	<string: role>
+						•	<int: available>:
+								o	0 is not available (i.e. not logged in)
+								o	1 is available (i.e. logged in)
+						o	>2 indicates number of minutes after which user will be available				 
+					 */
+					
+					var tempt2 = tempt.split(",");							
+					loginUserInfo = tempt2[0];
+					
+					var token = tokenid;
+					token = token.replace(" ","");
+					
+					if (loginUserInfo!=null && loginUserInfo!="" && setUserNameCommand == 1)
+					{		
+						setGreetingUsername(loginUserInfo);
+					}
+					
+					//send request to record session at server								
+					userid = userid.replace(" ","");	
+					
+					
+					if(setUserNameCommand == 1)
+						requestSession(userid, loginUserInfo, token, false);	
+					else
+						requestSession(userid, loginUserInfo, token, true);
+						
+					
+					
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(); 
+	} // end if 		
+}
+
+
+//send request to logout
+function requestLogout()
+{
+	var xhr = createRequest(); 
+	if(xhr) 
+	{ 	  		  
+		  var requestbody ="logout="+encodeURIComponent("yes"); 		 
+		  xhr.open("POST", "process/logout.php", true); 
+		  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 		
+			   		if(xhr.responseText=="success")
+			   		{
+			   			eraseCookie("userid");
+			   			eraseCookie("token");
+			   			
+			   			//navigate user to index.php					
+						window.location = "TeleConnectHomePage.php";	
+			   		}
+			   							
+									
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(requestbody); 
+	 } // end if 
+	
+}
+
+//send request to emailSupport.php to forward message from user to administrator
+function supportRequest()
+{
+	setSupportProgressIcon(true, supportProgressDivContainer);
+	
+	var txtFirstName = document.getElementById("txtFirstName").value;
+	var txtLastName = document.getElementById("txtLastName").value;
+	var txtMobileNumber = document.getElementById("txtMobileNumber").value;
+	var txtSupportEmail = document.getElementById("txtSupportEmail").value;	
+	var areaDescription = document.getElementById("areaDescription").value;
+	
+	var xhr = createRequest(); 
+	if(xhr) 
+	{ 	  
+	 	  var requestbody ="firstname="+encodeURIComponent(txtFirstName)+"&lastname="+encodeURIComponent(txtLastName)+
+	 						 "&mobile="+encodeURIComponent(txtMobileNumber)+"&email="+encodeURIComponent(txtSupportEmail)+
+	 						 "&description="+encodeURIComponent(areaDescription); 
+	 						 
+		  xhr.open("POST", "process/emailSupport.php", true); 
+		  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 		
+			   		if(xhr.responseText=="success")
+			   		{			   			
+			   			alert("Message is sent successfully.\nWe will contact you in a couple of minutes.");
+			   			//navigate user to index.php					
+						window.location = "TeleConnectHomePage.php";	
+			   		}
+			   		else
+			   		{
+			   			setSupportProgressIcon(false, supportProgressDivContainer);
+			   		}
+			   							
+									
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(requestbody); 
+	 } // end if 
+	
+}
+
+//set Support Progress Icon for Support form
+function setSupportProgressIcon(status, divContainer)
+{
+	if(status == true)
+	{
+		//set progress gif		
+		divContainer.innerHTML = "<span><button class='btn btn-primary' type='submit' onclick='supportFormValidation();'>Send</button> <img src='img/progress.gif' style='width: 200px; height: 20px; padding: 0px 0px 0px 10px;' alt=''> ... <font style='color: #3a87ad'>Requesting</font> </span>";	
+	}
+	else
+	{
+		divContainer.innerHTML = "<span><button class='btn btn-primary' type='submit' onclick='supportFormValidation();'>Send</button><span id='emailErrDesc' class='label label-important collapse in'>Error Sending!</span></span>";
+	}
+}
+
+
+//LDAP authentication
+function ldapAuthentication(userid, username, navCommand)
+{
+	if(navCommand == 1)
+	{
+		var xhr = createRequest(); 
+		if(xhr) 
+		{ 	  		  
+			  var requestbody ="userid="+encodeURIComponent(userid)+"&username="+encodeURIComponent(username); 		 
+			  xhr.open("POST", "process/ldap.php", true); 
+			  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+			  xhr.onreadystatechange = function() 
+			  { 
+				 //alert(xhr.readyState); // to let us see the state of the computation 
+				   if (xhr.readyState == 4 && xhr.status == 200) 
+				   { 				
+				   		if(xhr.responseText == "success")
+				   		{
+				   			//navigate user to index.php
+							if(navCommand == 1)
+								window.location = "index.php";	
+				   		}		
+				   		else
+				   		{
+				   			//set Request Progress Icon
+				   			var requestProgressDivContainer = document.getElementById("requestProgressDivContainer");	
+							var requestProgressDiv = document.getElementById("requestProgressDiv");
+							setRequestProgressIcon(false, requestProgressDivContainer, requestProgressDiv, "Fail to authenticate mobile phone!");
+				   		}	
+										
+				   } // end if 
+			  } // end anonymous call-back function 
+			  xhr.send(requestbody); 
+		 } // end if 
+	}
+	
+}
+
+
+
+//request insert new activity
+function insertActivity(userid, topic, type, start, duration, act_option, sender_channel_id, status, attachFiles)
+{	
+	var xhr = createRequest(); 
+	if(xhr) 
+	{ 	  		  
+		  var requestbody ="user_id="+encodeURIComponent(userid)+"&topic="+encodeURIComponent(topic)+"&type="+encodeURIComponent(type)+"&start="+encodeURIComponent(start)
+		  					+"&duration="+encodeURIComponent(duration)+"&act_option="+encodeURIComponent(act_option)
+		  					+"&sender_channel_id="+encodeURIComponent(sender_channel_id)+"&status="+encodeURIComponent(status)+"&attachFiles="+encodeURIComponent(attachFiles); 		 
+		  xhr.open("POST", "db_process/insertActivity.php", true); 
+		  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 				
+			   		if(xhr.responseText == "success")
+			   		{
+			   			
+			   		}		
+			   				
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(requestbody); 
+	 } // end if 
+	
+}
+
+//load activity
+function loadActivity()
+{		
+	oldActivityArea = document.getElementById("oldActivityArea");
+	var xhr = createRequest(); 
+	if(xhr) 
+	{ 	  		  
+		  var requestbody ="user_id="+encodeURIComponent("log");
+		  					 
+		  xhr.open("POST", "db_process/loadActivity.php", true); 
+		  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 				
+			   		if(xhr.responseText != "fail")
+			   		{
+			   			var tempt = xhr.responseText
+			   			oldActivityArea.innerHTML = tempt;
+			   			
+			   			//call function from custom_js/ajax/ajaxParseScript.js to execute javascript function from server response
+			   			parseScript(tempt);			   			
+			   		}		
+			   				
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(requestbody); 
+	 } // end if 	
+}
+
+//accept event
+function responseToCurrentActivity(activity_id, command)
+{
+	var xhr = createRequest(); 
+	if(xhr) 
+	{ 	  		  
+		  var requestbody ="activity_id="+encodeURIComponent(activity_id) + "&command="+encodeURIComponent(command);
+		  					 
+		  xhr.open("POST", "db_process/acceptActivity.php", true); 
+		  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 				
+			   		if(xhr.responseText == "success")
+			   		{
+			   			
+			   		}		
+			   				
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(requestbody); 
+	 } // end if 
+}
+
+
+//function send request to server to get sender information to response the action from current user back to sender.
+function getUserChannel(action, activity_id, sender_channel_id)
+{
+	var xhr = createRequest(); 
+	if(xhr) 
+	{ 	  		  
+		  var requestbody ="activity_id="+encodeURIComponent(activity_id);
+		  					 
+		  xhr.open("POST", "db_process/getUserChannel.php", true); 
+		  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 				
+			   		var tempt = xhr.responseText;
+			   		tempt = tempt.split(",");
+			   		
+			   		if(tempt.length == 4)
+			   		{
+			   			var channel_id = trim(tempt[0]);
+			   			var channel_name = trim(tempt[1]);
+			   			var key = trim(tempt[2]);
+			   			var secret = trim(tempt[3]);
+			   			var option = "";
+			   			
+			   			//call function from teleSock/custom_js/channel.js to authenticate to the channel that the msg will go through
+			   			auth2(channel_id, key, secret);
+			   						   			
+			   			// prepare response msg as xml format
+						var msg = prepareXMLmsg("responseVIC",sender_channel_id,action,activity_id,option); 
+						
+			   			//send response msg to that channel
+			   			publish2(channel_id, msg);
+			   			
+			   			//send response msg to current user channel. In case current user open two windows on browser
+			   			publish2(sender_channel_id, msg);
+			   		}
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(requestbody); 
+	 } // end if 
+}
+
+
+//function that retrieve attach file information to display to receiver when invitation come
+function getFileInfo(eChannelID, currentuserid, xmlDoc,displayTag, type, attachFiles)
+{
+	var xhr = createRequest(); 
+	if(xhr) 
+	{ 	  		  
+		  var requestbody ="attachFiles="+encodeURIComponent(attachFiles);
+		  					 
+		  xhr.open("POST", "db_process/getFileInfo.php", true); 
+		  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 				
+			   		var attachFilesInfo = xhr.responseText;
+			   		
+			   		displayReceiveProcess(eChannelID, currentuserid, xmlDoc,displayTag, type, attachFilesInfo)
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(requestbody); 
+	 } // end if 
+}
+
+
+//---------------------------------------------------------------------------------
+//this function replaces insertActivity which generates a bug that insert duplicate entries to database when user open multiple window.
+//function that send invitation and insert new activity into database
+function sendInvitation(currentuserid, topic, type, start, duration, act_option, sender_channel_id, status, attachFiles)
+{	
+	var xhr = createRequest(); 
+	if(xhr) 
+	{ 	  		  
+		  var requestbody ="currentuserid="+encodeURIComponent(currentuserid)+"&topic="+encodeURIComponent(topic)+"&type="+encodeURIComponent(type)+"&start="+encodeURIComponent(start)
+		  					+"&duration="+encodeURIComponent(duration)+"&act_option="+encodeURIComponent(act_option)
+		  					+"&sender_channel_id="+encodeURIComponent(sender_channel_id)+"&status="+encodeURIComponent(status)+"&attachFiles="+encodeURIComponent(attachFiles); 		 
+		  xhr.open("POST", "db_process/sendInvitation.php", true); 
+		  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 				
+			   		var friendChannelInfo = xhr.responseText;
+			   		if(friendChannelInfo!="")
+			   		{
+			   			friendChannelInfo = friendChannelInfo.split(",");
+			   			var friendchannelid = friendChannelInfo[0];
+			   			var access = friendChannelInfo[1];
+			   			var secret = friendChannelInfo[2];
+			   			var receivername = friendChannelInfo[3];
+			   			var activityid = friendChannelInfo[4];
+			   			//call function from teleSock/custom_js/channels.js
+			   			//authenticate to friendchannel before sending msg
+			   			auth2(friendchannelid, access, secret);
+			   			
+			   			//call function from custom_js/ajax/xmlProcess.js
+		   				var msg = prepareXMLtobroadcast(type, sender_channel_id, receivername, start, duration, topic, act_option, attachFiles, activityid);
+			   		
+			   			//call function from teleSock/custom_js/channels.js
+			   			//send invitation msg to friend channel
+			   			publish2(friendchannelid, msg);		
+			   			
+			   			//call function from teleSock/custom_js/channels.js
+			   			//send invitation msg to current user channel
+			   			publish2(sender_channel_id, msg);				   			
+			   		
+			   		}
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(requestbody); 
+	 } // end if 
+	
+}
+
+
+
+//this function get user information base on channel that user is assigned to
+function getUserInfo(friendChannel)
+{
+	var displayTag = $("#friendlist");
+	
+	var xhr = createRequest(); 
+	if(xhr) 
+	{ 	  		  
+		  var requestbody ="friendChannel="+encodeURIComponent(friendChannel);
+		  				 		 
+		  xhr.open("POST", "db_process/getUserInfo.php", true); 
+		  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		  xhr.onreadystatechange = function() 
+		  { 
+			 //alert(xhr.readyState); // to let us see the state of the computation 
+			   if (xhr.readyState == 4 && xhr.status == 200) 
+			   { 				
+			   		var friendUserInfo = xhr.responseText;
+			   		if(friendUserInfo!="")
+			   		{
+			   			friendUserInfo = friendUserInfo.split(",");
+			   			var friendid = friendUserInfo[1];
+			   			friendid = friendid.split(" ");
+			   			var firstname = friendid[0];
+			   			var lastname = friendid[1];
+			   			var friendChannelName = friendUserInfo[2];
+			   						   		
+			   			var newRowFriend =  '<tr>'+
+											'<td>'+firstname+'</td>'+
+											'<td>'+lastname+'</td>'+
+											'<td><span class="label label-success">Online</span></td>'+
+											'</tr>';
+			   				   			
+			   		  	$(displayTag).append(newRowFriend);
+			   		}
+			   } // end if 
+		  } // end anonymous call-back function 
+		  xhr.send(requestbody); 
+	 } // end if 
+}

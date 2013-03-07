@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Welcome Shoan Machine</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="Duc Nguyen">
+
+		<!-- Le styles -->
+		<style>
+			body {
+				padding-top: 100px; /* 60px to make the container go all the way to the bottom of the topbar */
+			}
+		</style>
+		<link href="Twitter_BootStrap_2.0.4/css/bootstrap.min.css" rel="stylesheet">
+		<link href="Twitter_BootStrap_2.0.4/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="FortAwesome-Font-Awesome-ee55c85/css/font-awesome.css" rel="stylesheet"/>
+		<link href="FortAwesome-Font-Awesome-ee55c85/css/font-awesome-ie7.css" rel="stylesheet"/>
+		<link href="custom_style/homepageStyle.css" rel="stylesheet"/>
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<!-- Le fav and touch icons -->
+		
+
+		<!-- import custom javascript -->
+		<script type="text/javascript" src="custom_js/form/validation.js"></script>
+	
+	</head>
+	<body id="body">
+		<div class="navbar navbar-fixed-top">
+			
+			
+			<div class="container-fluid">
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="container-fluid">
+							<button style="position: relative; bottom: 0.2em;" type="button" class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+								<span style="color: ;" class="icon-double-angle-down"></span>
+							</button>
+								<a class="brand" href="https://ccn.keytrust.com.au/tc/feed.php">CDLTruck</a>
+								<div class="nav-collapse collapse">
+									<ul class="nav">
+										<li class="active">
+											<a href="index.html">Home</a>
+										</li>
+										<li>
+											<a href="about.html">About</a>
+										</li>							
+										<li>
+											<a href="stock.html">Stock</a>
+										</li>
+										<li>
+											<a href="contact.html">Contact</a>
+										</li>
+									</ul>
+									<ul class="nav pull-right">
+										<li class="divider-vertical"></li>
+										<li><a href="https://ccn.keytrust.com.au/tc/login.php" class="navlink"> Login </a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+						
+						
+						
+			
+		</div><!--/Nav Bar-->
+
+		<div class="container">
+			<!-- Main hero unit for a primary marketing message or call to action -->
+			<div class="hero-unit">
+				<div class="active item centeredText bellFontSize">
+					<p><marquee behavior="scroll" width="250px" height="50px" direction="down" scrollamount="2"><font size="10">Welcome</font></marquee></p>
+					<h1> 湘南　マシン　Shonan Machine </h1>
+					<p><small> has many years experience in our services</small></p>
+					<p>
+						中古機械高価買い取り・一台から工場一式買い取り・工場片つける・機械据え付け・販売・輸出
+						<br/>
+						中古旋盤・フライス・ボール盤・プレス・シャーリング・ベンダー・フォクリーフト・その他
+						<br />
+						下取り機械、機械の解体、運搬はすべて当社の負担にて当社が実施
+					</p>
+					<p>
+						We offer very good price for all kinds of old machines not only single unit but also entire factory.
+						<br />
+						We also clean up, moving machine for factory and export to Asia
+						<br/>
+					    We are expertising in <b class="coloredHeading">buying</b> and <b class="coloredHeading">selling</b> used machines such as: <b class="coloredHeading">lathe</b> machine, <b class="coloredHeading">Milling</b>, machine Drilling machine, <b class="coloredHeading">Shaering</b> machine, <b class="coloredHeading">Press Brake</b> machine , <font class="coloredHeading" size="6" color="">Excavators</font>, Others
+					</p>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="span4">
+					<h3 class="coloredHeading"><i class="icon-key"></i>　信頼　＆　実積 <br />Trust　＆　Achievement</h3>
+					<h4 class="tagLine"> 是非、お任せてください</h4>
+					<p class="lead">
+						皆様の会社には、シートを被せたまま工場の隅に眠らせている 工作機械・板金機械 はありませんか？ また、新型への買い替えや工場の閉鎖をお考えで、機械の処分にお困りではありませんか？ 不良機械・動かなくなった機械・高年式機械・日本国内使用しないな機械、
+					</p>
+				</div>
+				<div class="span4">
+					<h3 class="coloredHeading"><i class="icon-user-md"></i>&nbsp; 重量運搬ー据え付け　<br />Heavy Transport & Installation </h3>
+					<p class="lead">						
+						＊　中古機械移動、運搬、据え付け、廃棄処分、ご商談ください。
+年式問うわない、全メーカ、汎用旋盤、汎用フライス、シャーリング、ベンダー、ギアープレスも買い取り輸出。
+					</p>
+				</div>
+				<div class="span4">
+					<h3 class="coloredHeading"><i class="icon-cloud"></i>&nbsp; その他中古ユンボ　<br />Export Construction Machines</h3>
+					<h4 class="tagLine"> 東南アジアに輸出</h4>
+					<p class="lead">
+						中古建機・中古ユンボ・ミニバックホー・ミニショベル販売
+					</p>
+				</div>
+			</div>
+			
+	
+
+			<hr>
+		<div class="span3">&nbsp;</div>		
+		<div>					
+				<div id="myCarousel" class="carousel slide">
+						 <!-- Carousel items -->
+				  <div class="carousel-inner">				   		   
+				    <div class="active item">				    	
+				    	<img src="img/com/3.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>Loading 80ton press machine (8トン　プレスの積み込み)</h4>	                      
+                   		 </div>
+				    </div>				  
+				    <div class="item">				    	
+				    	<img src="img/com/5.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>Loading 25ton press machine into container ー２５トン、プレスコンテナに積み込み</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/com/6.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>loding used machine - 汎用旋盤降ろし</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/com/7.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>				   
+				    <div class="item">				    	
+				    	<img src="img/com/9.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>				   
+				    <div class="item">				    	
+				    	<img src="img/com/11.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/com/12.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				  
+				    <div class="item">				    	
+				    	<img src="img/hinh/1.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/2.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/3.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/4.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/5.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/6.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/7.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/8.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/9.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/10.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/11.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    
+				    <div class="item">				    	
+				    	<img src="img/hinh/13.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/14.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/15.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/16.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/17.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/18.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/19.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/20.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/21.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/22.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/23.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/24.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    <div class="item">				    	
+				    	<img src="img/hinh/25.jpg" alt>
+				    	<div class="carousel-caption">
+	                      <h4>First Thumbnail label</h4>	                      
+                   		 </div>
+				    </div>
+				    
+				  </div>
+				  <!-- Carousel nav -->
+				  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+				  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+				</div>		
+		</div>	
+		<div class="span3">&nbsp;</div>	
+			<hr>
+			
+			<footer class="well btn-success">
+				<div class="row">
+					<div class="span2">
+						&nbsp;	
+					</div>
+					<div class="span3">
+						<i class="icon-sitemap"></i><h3 class="inlineHeading"> 連絡先</h3>
+						<address>
+							<h4> 湘南　マシン </h4>
+							<p>〒２５３−０１０１
+								<br />
+								神奈川県 茅ヶ崎市
+								<br />
+								赤羽根　３７６１−１４
+								<br />
+								<abbr title="Phone"> 電話番語: </abbr>
+								0467-53-1393
+								<br />
+								<abbr title="Fax"> Fax: </abbr>
+								0467-51-1199 
+								<br />
+								<abbr title="Email"> Email: </abbr>
+								shonanmachine_jp@yahoo.co.jp
+							</p>
+						</address>
+					</div>
+					<div class="span3">
+						<i class="icon-sitemap"></i><h3 class="inlineHeading"> Contact</h3>
+						<address>
+							<h4> Shonan Machine </h4>
+							<p>
+								3761-14 AKABANE-CHIGASAKI CITY. 
+								<br />
+								KANAGAWA KEN - JAPAN
+								<br />
+								<abbr title="Phone"> Phone: </abbr>
+								0467-53-1393
+								<br />
+								<abbr title="Fax"> Fax: </abbr>
+								0467-51-1199 
+								<br />
+								<abbr title="Email"> Email: </abbr>
+								shonanmachine_jp@yahoo.co.jp
+							</p>
+						</address>
+					</div>
+					<div class="span3">
+						<i class="icon-sitemap"></i><h3 class="inlineHeading">ページ Pages </h3>
+						<ul class="navbar-inverse"  style="color: white">
+							<li>
+								<a href="index.html"  style="color: white">ホーム　&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Home</a>
+							</li>
+							<li>
+								<a href="about.html" style="color: white">会社概要 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;　About</a>
+							</li>
+							<li>
+								<a href="stock.html" style="color: white">在庫　 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  Stock</a>
+							</li>
+							<li>
+								<a href="contact.html" style="color: white">お問い合わせ　 &nbsp;&nbsp;  Contact</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+			<div class="row">
+				<div class="span4">
+					&nbsp;
+				</div>
+				<div class="span4">
+					Copyright (C) 2011 ShoNan Machine All Rights Reserved.
+				</div>
+				<div class="span4">
+					&nbsp;
+				</div>
+			</div>
+
+		</div>
+		<!-- /fluid container -->
+
+		<!-- Le javascript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="Twitter_BootStrap_2.0.4/js/jquery-1.9.1.min.js"></script>
+		<script src="Twitter_BootStrap_2.0.4/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript">
+			$('#carousel').carousel({
+				interval : 3500
+			})
+		</script>
+
+	</body>
+</html>
