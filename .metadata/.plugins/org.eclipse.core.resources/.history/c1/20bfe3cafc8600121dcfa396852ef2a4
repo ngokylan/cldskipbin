@@ -1,0 +1,11 @@
+.contactstyle{
+	
+}
+
+.footerstyle{
+	background-color: #00baf0;
+}
+
+.footerstyle h4{
+	color: whitel
+}

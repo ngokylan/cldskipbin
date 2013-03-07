@@ -1,0 +1,30 @@
+body{
+	
+}
+
+.ActivityRowAlt{
+	background-color:#DCDCDC;
+	text-decoration: none;
+}
+
+.actorActivityHeading{
+	color: #242424;
+}
+
+.actorActivityDetailsLink:hover{
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.activityAccordian{
+	padding-top: 10px;
+}
+
+.activityAccordianItem{
+	padding-bottom: 5px;
+}
+
+.dropdownIcon{
+	padding-right: 5px;
+}
+
